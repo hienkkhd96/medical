@@ -55,7 +55,7 @@ export default function TabLayout() {
       <Tabs.Screen
         name="four"
         options={{
-          title: "Tab Two",
+          title: "Appointments",
           tabBarIcon: ({ color }: any) => (
             <MaterialIcons name="code" size={36} color={color} />
           ),

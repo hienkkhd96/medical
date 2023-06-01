@@ -1,5 +1,5 @@
 import React, { CSSProperties, ReactElement } from "react";
-import { StyleProp, Text, TextStyle } from "react-native";
+import { StyleProp, Text, TextProps, TextStyle } from "react-native";
 import Colors from "../../constants/Colors";
 
 type TypeTitle = "t1" | "t2" | "t3" | "t4" | "t5" | "t6" | "t7" | "t8" | "t9";
@@ -10,6 +10,7 @@ type Props = {
   children: string | undefined;
   style?: TextStyle;
   color?: string;
+  numberOfLines?: number;
 };
 const TypeMap: Record<TypeTitle, StyleProp<TextStyle>> = {
   t1: {
@@ -69,9 +70,11 @@ export default function Title({
   children,
   style,
   color,
+  numberOfLines,
 }: Props) {
   return (
     <Text
+      numberOfLines={numberOfLines}
       style={[
         TypeMap[type],
         WeightMap[weight],

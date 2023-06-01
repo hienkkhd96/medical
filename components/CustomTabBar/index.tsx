@@ -1,20 +1,23 @@
 import { BottomTabBarProps } from "@react-navigation/bottom-tabs";
 import { TabActions } from "@react-navigation/native";
-import React from "react";
-import { Pressable, View } from "react-native";
+import React, { useEffect, useRef } from "react";
+import { Animated, Pressable, TouchableOpacity, View } from "react-native";
 import Colors from "../../constants/Colors";
 import Title from "../Typo/Title";
+import ButtonTab from "./ButtonTab";
 
 export default function CustomTabBar({
   descriptors,
   state,
   navigation: rootNavigation,
 }: BottomTabBarProps) {
+  const viewRef = useRef(null);
+  const animation = { 0: { scale: 0 }, 1: { scale: 1 } };
   return (
     <View
       style={{
         position: "absolute",
-        bottom: 0,
+        bottom: 16,
         zIndex: 1000,
         width: "100%",
       }}
@@ -27,7 +30,7 @@ export default function CustomTabBar({
           marginHorizontal: 16,
           borderRadius: 16,
           display: "flex",
-          justifyContent: "space-evenly",
+          justifyContent: "space-around",
           flexDirection: "row",
           alignItems: "center",
           overflow: "hidden",
@@ -39,48 +42,14 @@ export default function CustomTabBar({
           const isForcused = navigation.isFocused();
 
           return (
-            <Pressable
-              style={{
-                width: isForcused ? "36%" : "18%",
-                height: "100%",
-                justifyContent: "center",
-                alignItems: "center",
-                backgroundColor: isForcused
-                  ? "#FF9100"
-                  : Colors.light.background,
-                borderRadius: 8,
-                overflow: "hidden",
-              }}
-              onPress={() => {
-                const event = rootNavigation.emit({
-                  type: "tabPress",
-                  target: item.key,
-                  canPreventDefault: true,
-                });
-
-                if (!event.defaultPrevented) {
-                  rootNavigation.dispatch({
-                    ...TabActions.jumpTo(item.name),
-                    target: state.key,
-                  });
-                }
-              }}
+            <ButtonTab
               key={item.key}
-            >
-              <View
-                style={{
-                  flexDirection: "row",
-                  justifyContent: "center",
-                  alignItems: "center",
-                  gap: 10,
-                }}
-              >
-                {options.tabBarIcon && <options.tabBarIcon color="white" />}
-                {isForcused && (
-                  <Title color={Colors.light.white}>{options.title}</Title>
-                )}
-              </View>
-            </Pressable>
+              options={options}
+              state={state}
+              rootNavigation={rootNavigation}
+              isForcused={isForcused}
+              item={item}
+            />
           );
         })}
       </View>
