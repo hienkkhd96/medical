@@ -5,6 +5,7 @@ import { Animated, Pressable, TouchableOpacity, View } from "react-native";
 import Colors from "../../constants/Colors";
 import Title from "../Typo/Title";
 import ButtonTab from "./ButtonTab";
+import { WEB_MAXWIDTH } from "../../constants/DefaultValue";
 
 export default function CustomTabBar({
   descriptors,
@@ -17,7 +18,7 @@ export default function CustomTabBar({
     <View
       style={{
         position: "absolute",
-        bottom: 16,
+        bottom: 10,
         zIndex: 1000,
         width: "100%",
       }}
@@ -27,12 +28,14 @@ export default function CustomTabBar({
           backgroundColor: Colors.light.background,
           height: 58,
           padding: 9,
-          marginHorizontal: 16,
+          marginHorizontal: "auto",
           borderRadius: 16,
           display: "flex",
           justifyContent: "space-around",
           flexDirection: "row",
           alignItems: "center",
+          maxWidth: "100%",
+          width: WEB_MAXWIDTH - 32,
           overflow: "hidden",
           gap: 10,
         }}

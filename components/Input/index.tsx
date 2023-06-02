@@ -1,6 +1,6 @@
 import React, { useState } from "react";
-import { Controller, useForm } from "react-hook-form";
-import { Button, View } from "react-native";
+import { Controller, useForm, useFormContext } from "react-hook-form";
+import { Button, View, ViewStyle } from "react-native";
 import { HelperText, TextInput } from "react-native-paper";
 import Colors from "../../constants/Colors";
 
@@ -8,34 +8,29 @@ type Props = {
   name: string;
   label: string;
   rules?: any;
-  defaultValue?: string;
   isPassword?: boolean;
   helperText?: string;
   leftIcon?: string;
+  containerStyle?: ViewStyle;
 };
 
 export default function CsInput({
   name,
   rules,
-  defaultValue,
   isPassword = false,
   helperText,
   label,
+  containerStyle,
   leftIcon,
 }: Props) {
   const {
     control,
-    handleSubmit,
     formState: { errors },
-  } = useForm({
-    defaultValues: {
-      [name]: defaultValue,
-    },
-  });
-  const [showPassword, setShowPassword] = useState<boolean>(false);
+  } = useFormContext();
+  const [showPassword, setShowPassword] = useState<boolean>(true);
   const onSubmit = (data: any) => console.log(data);
   return (
-    <View>
+    <View style={containerStyle}>
       <Controller
         name={name}
         control={control}

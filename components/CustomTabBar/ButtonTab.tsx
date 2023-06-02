@@ -1,8 +1,7 @@
 import { TabActions } from "@react-navigation/native";
-import React, { useEffect, useRef } from "react";
+import React from "react";
 import { Animated, TouchableOpacity, View } from "react-native";
 import Colors from "../../constants/Colors";
-import Title from "../Typo/Title";
 
 type Props = {
   item: any;
@@ -21,7 +20,6 @@ function ButtonTab({
 }: Props) {
   const textAni = new Animated.Value(0);
   const opacityAni = new Animated.Value(0);
-  console.log(isForcused);
 
   const textInter = textAni.interpolate({
     inputRange: [0, 1],
@@ -113,6 +111,7 @@ function ButtonTab({
               style={{
                 width: textInter,
                 color: Colors.light.white,
+                fontFamily: "ManropeBold",
               }}
               numberOfLines={1}
             >

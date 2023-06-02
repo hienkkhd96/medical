@@ -6,27 +6,21 @@ import CsInput from "../../components/Input";
 import { View } from "../../components/Themed";
 import Heading from "../../components/Typo/Heading";
 import Title from "../../components/Typo/Title";
+import AppLayout from "../../components/Layout";
 
 export default function TabOneScreen() {
   return (
-    <View style={styles.container}>
-      <Heading>A quick brown fox jumps over the lazy dog.</Heading>
-      <Title> A quick brown fox jumps over the lazy dog.</Title>
-      <View style={{ marginVertical: 16, width: "100%" }}>
-        <CsInput
-          name="Name"
-          rules={{ required: true }}
-          defaultValue="Nguyen Dinh Hien"
-          label="Name"
-          leftIcon={"magnify"}
-          isPassword
-        />
+    <AppLayout>
+      <View style={styles.container}>
+        <Heading>A quick brown fox jumps over the lazy dog.</Heading>
+        <Title> A quick brown fox jumps over the lazy dog.</Title>
+        <View style={{ marginVertical: 16, width: "100%" }}></View>
+        <View style={{ marginVertical: 16, width: "100%" }}>
+          <CsButton mode="contained">Button</CsButton>
+        </View>
+        <EditScreenInfo path="app/(tabs)/index.tsx" />
       </View>
-      <View style={{ marginVertical: 16, width: "100%" }}>
-        <CsButton mode="contained">Button</CsButton>
-      </View>
-      <EditScreenInfo path="app/(tabs)/index.tsx" />
-    </View>
+    </AppLayout>
   );
 }
 

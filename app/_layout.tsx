@@ -12,8 +12,10 @@ import { PaperProvider } from "react-native-paper";
 export { ErrorBoundary } from "expo-router";
 
 export const unstable_settings = {
-  // Ensure that reloading on `/modal` keeps a back button present.
-  initialRouteName: "(tabs)",
+  initialRouteName: "login",
+  tabs: {
+    initialRouteName: "two",
+  },
 };
 
 export default function RootLayout() {
@@ -49,7 +51,14 @@ function RootLayoutNav() {
           value={colorScheme === "dark" ? DarkTheme : DefaultTheme}
         >
           <Stack>
-            <Stack.Screen name="(tabs)" options={{ headerShown: false }} />
+            <Stack.Screen
+              name="(tabs)"
+              options={{ headerShown: false, animation: "slide_from_right" }}
+            />
+            <Stack.Screen
+              name="(auth)"
+              options={{ headerShown: false, animation: "slide_from_right" }}
+            />
           </Stack>
         </ThemeProvider>
       </PaperProvider>

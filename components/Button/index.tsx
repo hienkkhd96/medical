@@ -1,5 +1,5 @@
 import React from "react";
-import { Button, TextInput } from "react-native-paper";
+import { Button, ButtonProps } from "react-native-paper";
 import Colors from "../../constants/Colors";
 import Title from "../Typo/Title";
 type Props = {
@@ -7,22 +7,29 @@ type Props = {
   backgroundColor?: string;
   children: string;
   disabled?: boolean;
+  icon?: string;
 };
 
 export default function CsButton({
   mode = "contained",
   backgroundColor = Colors.light.background,
+  icon,
   children,
   disabled,
-}: Props) {
+  style,
+  ...rest
+}: Props & ButtonProps) {
   return (
     <Button
       disabled={disabled}
       mode={mode}
-      style={{
-        paddingVertical: 4,
-        borderRadius: 8,
-      }}
+      style={[
+        {
+          paddingVertical: 4,
+          borderRadius: 8,
+        },
+        style,
+      ]}
       theme={{
         colors: {
           primary: backgroundColor,
@@ -30,8 +37,8 @@ export default function CsButton({
           surfaceDisabled: Colors.dark.gray5,
         },
       }}
-      icon={"plus"}
-      onPress={console.log}
+      icon={icon}
+      {...rest}
     >
       <Title
         type="t6"
