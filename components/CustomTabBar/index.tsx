@@ -21,6 +21,7 @@ export default function CustomTabBar({
         bottom: 10,
         zIndex: 1000,
         width: "100%",
+        paddingHorizontal: 16,
       }}
     >
       <View

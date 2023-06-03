@@ -6,6 +6,7 @@ type TypeHeading = "h1" | "h2" | "h3" | "h4" | "h5" | "h6";
 type Props = {
   type?: TypeHeading;
   children: string;
+  style?: TextStyle;
 };
 const TypeMap: Record<TypeHeading, StyleProp<TextStyle>> = {
   h1: {
@@ -33,7 +34,7 @@ const TypeMap: Record<TypeHeading, StyleProp<TextStyle>> = {
     lineHeight: 22,
   },
 };
-export default function Heading({ type = "h3", children }: Props) {
+export default function Heading({ type = "h3", children, style }: Props) {
   return (
     <Text
       style={[
@@ -42,6 +43,7 @@ export default function Heading({ type = "h3", children }: Props) {
           fontFamily: "ManropeSemiBold",
           color: Colors.light.text,
         },
+        style,
       ]}
     >
       {children}

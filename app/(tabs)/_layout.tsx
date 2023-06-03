@@ -10,14 +10,17 @@ import CustomTabBar from "../../components/CustomTabBar";
 export default function TabLayout() {
   return (
     <Tabs
+      screenOptions={{
+        headerShown: false,
+      }}
       tabBar={(props) => {
         return <CustomTabBar {...props} />;
       }}
     >
       <Tabs.Screen
-        name="one"
+        name="dashboard"
         options={{
-          title: "Tab One",
+          title: "Dashboard",
           tabBarIcon: ({ color }: any) => (
             <MaterialIcons name="view-column" size={36} color={color} />
           ),

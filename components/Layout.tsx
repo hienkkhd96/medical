@@ -1,21 +1,25 @@
 import React, { ReactElement } from "react";
-import { Image, ScrollView, View } from "react-native";
+import { Image, View, ViewStyle } from "react-native";
 import Colors from "../constants/Colors";
 import { WEB_MAXWIDTH } from "../constants/DefaultValue";
 type Props = {
-  children: ReactElement;
+  children: ReactElement[] | ReactElement;
+  style?: ViewStyle;
 };
-const AppLayout = ({ children }: Props) => {
+const AppLayout = ({ children, style }: Props) => {
   return (
     <View
-      style={{
-        backgroundColor: Colors.light.white,
-        marginHorizontal: "auto",
-        width: WEB_MAXWIDTH,
-        maxWidth: "100%",
-        height: "100%",
-        flex: 1,
-      }}
+      style={[
+        {
+          backgroundColor: Colors.light.white,
+          marginHorizontal: "auto",
+          width: WEB_MAXWIDTH,
+          maxWidth: "100%",
+          height: "100%",
+          flex: 1,
+        },
+        style,
+      ]}
     >
       <View
         style={{

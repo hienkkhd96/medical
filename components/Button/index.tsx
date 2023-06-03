@@ -1,11 +1,11 @@
-import React from "react";
+import React, { ReactElement } from "react";
 import { Button, ButtonProps } from "react-native-paper";
 import Colors from "../../constants/Colors";
 import Title from "../Typo/Title";
 type Props = {
   mode?: "text" | "outlined" | "contained" | "elevated" | "contained-tonal";
   backgroundColor?: string;
-  children: string;
+  children: string | ReactElement | ReactElement[];
   disabled?: boolean;
   icon?: string;
 };
