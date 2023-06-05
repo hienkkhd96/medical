@@ -1,6 +1,6 @@
 import { Tabs } from "expo-router";
 
-import { MaterialIcons } from "@expo/vector-icons";
+import { Ionicons, MaterialIcons } from "@expo/vector-icons";
 import CustomTabBar from "../../components/CustomTabBar";
 
 /**
@@ -22,16 +22,16 @@ export default function TabLayout() {
         options={{
           title: "Dashboard",
           tabBarIcon: ({ color }: any) => (
-            <MaterialIcons name="view-column" size={36} color={color} />
+            <MaterialIcons name="view-column" size={30} color={color} />
           ),
         }}
       />
       <Tabs.Screen
-        name="two"
+        name="appointments"
         options={{
-          title: "Tab Two",
+          title: "Appointments",
           tabBarIcon: ({ color }: any) => (
-            <MaterialIcons name="code" size={36} color={color} />
+            <Ionicons name="file-tray-full-outline" size={30} color={color} />
           ),
         }}
       />
@@ -40,16 +40,16 @@ export default function TabLayout() {
         options={{
           title: "Tab Two",
           tabBarIcon: ({ color }: any) => (
-            <MaterialIcons name="code" size={36} color={color} />
+            <MaterialIcons name="code" size={30} color={color} />
           ),
         }}
       />
       <Tabs.Screen
         name="four"
         options={{
-          title: "Appointments",
+          title: "Four",
           tabBarIcon: ({ color }: any) => (
-            <MaterialIcons name="code" size={36} color={color} />
+            <MaterialIcons name="code" size={30} color={color} />
           ),
         }}
       />

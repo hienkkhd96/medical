@@ -1,5 +1,5 @@
 import { TabActions } from "@react-navigation/native";
-import React from "react";
+import React, { useEffect } from "react";
 import { Animated, TouchableOpacity, View } from "react-native";
 import Colors from "../../constants/Colors";
 
@@ -29,34 +29,36 @@ function ButtonTab({
     inputRange: [0, 1],
     outputRange: [0, 1],
   });
-  if (isForcused) {
-    Animated.timing(textAni, {
-      toValue: 1,
-      duration: 500,
-      useNativeDriver: false,
-    }).start();
-    Animated.timing(opacityAni, {
-      toValue: 0,
-      duration: 0,
-      useNativeDriver: false,
-    }).start();
-    Animated.timing(opacityAni, {
-      toValue: 1,
-      duration: 500,
-      useNativeDriver: false,
-    }).start();
-  } else {
-    Animated.timing(textAni, {
-      toValue: 0,
-      duration: 500,
-      useNativeDriver: false,
-    }).start();
-    Animated.timing(opacityAni, {
-      toValue: 1,
-      duration: 0,
-      useNativeDriver: false,
-    }).start();
-  }
+  useEffect(() => {
+    if (isForcused) {
+      Animated.timing(textAni, {
+        toValue: 1,
+        duration: 500,
+        useNativeDriver: false,
+      }).start();
+      Animated.timing(opacityAni, {
+        toValue: 0,
+        duration: 0,
+        useNativeDriver: false,
+      }).start();
+      Animated.timing(opacityAni, {
+        toValue: 1,
+        duration: 500,
+        useNativeDriver: false,
+      }).start();
+    } else {
+      Animated.timing(textAni, {
+        toValue: 0,
+        duration: 500,
+        useNativeDriver: false,
+      }).start();
+      Animated.timing(opacityAni, {
+        toValue: 1,
+        duration: 0,
+        useNativeDriver: false,
+      }).start();
+    }
+  }, [isForcused]);
 
   return (
     <Animated.View
@@ -65,7 +67,7 @@ function ButtonTab({
           height: "100%",
           justifyContent: "center",
           alignItems: "center",
-          backgroundColor: isForcused ? "#FF9100" : Colors.light.background,
+          backgroundColor: isForcused ? "#30005E" : Colors.light.darkPurle,
           borderRadius: 8,
           overflow: "hidden",
           opacity: opacityInter,

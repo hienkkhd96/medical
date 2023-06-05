@@ -7,7 +7,7 @@ type WeightTitle = "bold" | "semiBold" | "medium" | "regular";
 type Props = {
   type?: TypeTitle;
   weight?: WeightTitle;
-  children: string | undefined;
+  children: string | ReactElement | ReactElement[] | undefined;
   style?: TextStyle;
   color?: string;
   numberOfLines?: number;

@@ -59,6 +59,10 @@ function RootLayoutNav() {
               name="(auth)"
               options={{ headerShown: false, animation: "slide_from_right" }}
             />
+            <Stack.Screen
+              name="appointment"
+              options={{ headerShown: false, animation: "slide_from_right" }}
+            />
           </Stack>
         </ThemeProvider>
       </PaperProvider>

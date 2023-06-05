@@ -1,18 +1,24 @@
 import { Ionicons } from "@expo/vector-icons";
 import React from "react";
-import { Image, View } from "react-native";
+import { Image, View, ViewStyle } from "react-native";
 import { Shadow } from "react-native-shadow-2";
 import Colors from "../../constants/Colors";
 import CsButton from "../Button";
 import Title from "../Typo/Title";
-type Props = {};
+type Props = {
+  width?: number | string;
+  style?: ViewStyle;
+};
 
-function TopDoctor({}: Props) {
+function TopDoctor({ width, style }: Props) {
   return (
     <View
-      style={{
-        margin: 16,
-      }}
+      style={[
+        {
+          margin: 16,
+        },
+        style,
+      ]}
     >
       <Shadow
         distance={11}
@@ -64,7 +70,7 @@ function TopDoctor({}: Props) {
             backgroundColor: "#DEF2FF",
             borderRadius: 4,
             paddingHorizontal: 8,
-            width: 272,
+            width: width ? width : 272,
           }}
         >
           <View style={{ flexDirection: "row", alignItems: "center" }}>

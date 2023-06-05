@@ -1,13 +1,14 @@
-import React from "react";
+import React, { ReactElement } from "react";
 import { View, Image, TouchableOpacity, BackHandler } from "react-native";
 import Title from "../Typo/Title";
 import { IconButton } from "react-native-paper";
 import { useFocusEffect, useNavigation, useRouter } from "expo-router";
 type Props = {
   arrowBack?: boolean;
+  title?: ReactElement;
 };
 
-function Header({ arrowBack = false }: Props) {
+function Header({ arrowBack = false, title }: Props) {
   const navigation = useNavigation();
   const { canGoBack, goBack } = navigation;
   useFocusEffect(
@@ -52,7 +53,11 @@ function Header({ arrowBack = false }: Props) {
           }}
         />
       )}
-      <Image source={require("../../assets/images/MedCureLogo.png")} />
+      {title ? (
+        title
+      ) : (
+        <Image source={require("../../assets/images/MedCureLogo.png")} />
+      )}
     </View>
   );
 }

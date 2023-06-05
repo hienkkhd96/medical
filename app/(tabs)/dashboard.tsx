@@ -12,6 +12,8 @@ import TopDoctor from "../../components/Card/TopDoctor";
 import AppLayout from "../../components/Layout";
 import Title from "../../components/Typo/Title";
 import Colors from "../../constants/Colors";
+import Article from "../../components/Card/Article";
+import { List } from "react-native-paper";
 
 type Props = {};
 
@@ -176,7 +178,6 @@ function Dashboard({}: Props) {
               style={{
                 marginTop: 36,
                 marginHorizontal: 16,
-                marginBottom: 140,
                 borderRadius: 8,
                 width: "100%",
                 height: "auto",
@@ -204,6 +205,132 @@ function Dashboard({}: Props) {
                 </Title>
               </CsButton>
             </ImageBackground>
+          </View>
+          <View
+            style={{
+              marginTop: 36,
+            }}
+          >
+            <View
+              style={{
+                flexDirection: "row",
+                justifyContent: "space-between",
+                paddingHorizontal: 16,
+                alignItems: "center",
+              }}
+            >
+              <Title type="t6" weight="bold">
+                Health Articles
+              </Title>
+              <Title color={Colors.light.gray1}>See All</Title>
+            </View>
+            <ScrollView horizontal showsHorizontalScrollIndicator={false}>
+              <Article />
+              <Article />
+              <Article />
+            </ScrollView>
+          </View>
+          <View
+            style={{
+              marginTop: 20,
+              paddingHorizontal: 16,
+              marginBottom: 140,
+            }}
+          >
+            <Title type="t6" weight="bold">
+              Book Appointments in 3 easy steps
+            </Title>
+            <View>
+              <List.Section style={{ margin: 0, padding: 0 }}>
+                <List.Item
+                  style={{
+                    marginVertical: -10,
+                  }}
+                  title={
+                    <Title weight="regular">
+                      Search for doctors by speciality , service or diease
+                    </Title>
+                  }
+                  titleNumberOfLines={2}
+                  left={(props) => (
+                    <View
+                      style={{
+                        width: 36,
+                        height: 36,
+                        justifyContent: "center",
+                        alignItems: "center",
+                        borderRadius: 8,
+                        backgroundColor: Colors.light.background,
+                      }}
+                    >
+                      <Ionicons
+                        name="search-outline"
+                        size={20}
+                        color={Colors.light.white}
+                      />
+                    </View>
+                  )}
+                />
+                <List.Item
+                  style={{
+                    marginVertical: -10,
+                  }}
+                  title={
+                    <Title weight="regular">
+                      Search for doctors by speciality , service or diease
+                    </Title>
+                  }
+                  titleNumberOfLines={2}
+                  left={(props) => (
+                    <View
+                      style={{
+                        width: 36,
+                        height: 36,
+                        justifyContent: "center",
+                        alignItems: "center",
+                        borderRadius: 8,
+                        backgroundColor: Colors.light.background,
+                      }}
+                    >
+                      <Ionicons
+                        name="bookmark-outline"
+                        size={20}
+                        color={Colors.light.white}
+                      />
+                    </View>
+                  )}
+                />
+                <List.Item
+                  style={{
+                    marginVertical: -10,
+                  }}
+                  title={
+                    <Title weight="regular">
+                      Search for doctors by speciality , service or diease
+                    </Title>
+                  }
+                  titleNumberOfLines={2}
+                  left={(props) => (
+                    <View
+                      style={{
+                        width: 36,
+                        height: 36,
+                        justifyContent: "center",
+                        alignItems: "center",
+                        borderRadius: 8,
+                        backgroundColor: Colors.light.background,
+                      }}
+                    >
+                      <Ionicons
+                        name="checkmark-circle-outline"
+                        size={20}
+                        color={Colors.light.white}
+                      />
+                    </View>
+                  )}
+                />
+              </List.Section>
+            </View>
           </View>
         </View>
       </ScrollView>
