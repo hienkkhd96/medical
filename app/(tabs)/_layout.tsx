@@ -22,7 +22,7 @@ export default function TabLayout() {
         options={{
           title: "Dashboard",
           tabBarIcon: ({ color }: any) => (
-            <MaterialIcons name="view-column" size={30} color={color} />
+            <Ionicons name="grid-outline" size={30} color={color} />
           ),
         }}
       />
@@ -36,20 +36,20 @@ export default function TabLayout() {
         }}
       />
       <Tabs.Screen
-        name="three"
+        name="find-doctor"
         options={{
-          title: "Tab Two",
+          title: "Search",
           tabBarIcon: ({ color }: any) => (
-            <MaterialIcons name="code" size={30} color={color} />
+            <Ionicons name="search-outline" size={30} color={color} />
           ),
         }}
       />
       <Tabs.Screen
         name="four"
         options={{
-          title: "Four",
+          title: "Menu",
           tabBarIcon: ({ color }: any) => (
-            <MaterialIcons name="code" size={30} color={color} />
+            <Ionicons name="menu" size={30} color={color} />
           ),
         }}
       />

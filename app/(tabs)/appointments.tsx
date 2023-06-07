@@ -222,88 +222,93 @@ export default function TabTwoScreen() {
             </View>
           </ScrollView>
         </View>
-        <View
-          style={{
-            marginTop: 24,
-          }}
-        >
-          <Title type="t6" weight="semiBold">
+        <View>
+          <Title
+            style={{
+              marginTop: 24,
+            }}
+            type="t6"
+            weight="semiBold"
+          >
             03 Appointments
           </Title>
-          <View>
-            <View style={{ flexDirection: "row", marginTop: 16 }}>
-              <Chip
-                style={{
-                  borderRadius: 8,
-                  backgroundColor: Colors.dark.orange,
-                }}
-                textStyle={{
-                  fontFamily: "ManropeMedium",
-                  fontSize: 12,
-                  fontWeight: "500",
-                  color: Colors.light.background,
-                }}
-                onPress={() => console.log("Pressed")}
-              >
-                All
-              </Chip>
-              <Chip
-                style={{
-                  borderRadius: 8,
-                  backgroundColor: Colors.dark.white,
-                }}
-                textStyle={{
-                  fontFamily: "ManropeMedium",
-                  fontSize: 12,
-                  fontWeight: "500",
-                  color: Colors.light.gray2,
-                }}
-                onPress={() => console.log("Pressed")}
-              >
-                Upcoming
-              </Chip>
-              <Chip
-                style={{
-                  borderRadius: 8,
-                  backgroundColor: Colors.dark.white,
-                }}
-                textStyle={{
-                  fontFamily: "ManropeMedium",
-                  fontSize: 12,
-                  fontWeight: "500",
-                  color: Colors.light.gray2,
-                }}
-                onPress={() => console.log("Pressed")}
-              >
-                Completed
-              </Chip>
-              <Chip
-                style={{
-                  borderRadius: 8,
-                  backgroundColor: Colors.dark.white,
-                }}
-                textStyle={{
-                  fontFamily: "ManropeMedium",
-                  fontSize: 12,
-                  fontWeight: "500",
-                  color: Colors.light.gray2,
-                }}
-                onPress={() => console.log("Pressed")}
-              >
-                Canceled
-              </Chip>
-            </View>
-            <ScrollView
+          <View
+            style={{ flexDirection: "row", marginTop: 16, marginBottom: 16 }}
+          >
+            <Chip
               style={{
-                marginTop: 8,
+                borderRadius: 8,
+                backgroundColor: Colors.dark.orange,
               }}
+              textStyle={{
+                fontFamily: "ManropeMedium",
+                fontSize: 12,
+                fontWeight: "500",
+                color: Colors.light.background,
+              }}
+              onPress={() => console.log("Pressed")}
             >
-              <Appointment />
-              <Appointment />
-              <Appointment />
-            </ScrollView>
+              All
+            </Chip>
+            <Chip
+              style={{
+                borderRadius: 8,
+                backgroundColor: Colors.dark.white,
+              }}
+              textStyle={{
+                fontFamily: "ManropeMedium",
+                fontSize: 12,
+                fontWeight: "500",
+                color: Colors.light.gray2,
+              }}
+              onPress={() => console.log("Pressed")}
+            >
+              Upcoming
+            </Chip>
+            <Chip
+              style={{
+                borderRadius: 8,
+                backgroundColor: Colors.dark.white,
+              }}
+              textStyle={{
+                fontFamily: "ManropeMedium",
+                fontSize: 12,
+                fontWeight: "500",
+                color: Colors.light.gray2,
+              }}
+              onPress={() => console.log("Pressed")}
+            >
+              Completed
+            </Chip>
+            <Chip
+              style={{
+                borderRadius: 8,
+                backgroundColor: Colors.dark.white,
+              }}
+              textStyle={{
+                fontFamily: "ManropeMedium",
+                fontSize: 12,
+                fontWeight: "500",
+                color: Colors.light.gray2,
+              }}
+              onPress={() => console.log("Pressed")}
+            >
+              Canceled
+            </Chip>
           </View>
         </View>
+        <ScrollView showsVerticalScrollIndicator={false}>
+          <View
+            style={{
+              marginBottom: 80,
+            }}
+          >
+            <Appointment />
+            <Appointment />
+            <Appointment />
+            <Appointment />
+          </View>
+        </ScrollView>
       </View>
     </AppLayout>
   );

@@ -12,6 +12,8 @@ type Props = {
   helperText?: string;
   leftIcon?: string;
   containerStyle?: ViewStyle;
+  inputStyle?: ViewStyle;
+  placeHolder?: string;
 };
 
 export default function CsInput({
@@ -21,7 +23,9 @@ export default function CsInput({
   helperText,
   label,
   containerStyle,
+  inputStyle,
   leftIcon,
+  placeHolder,
 }: Props) {
   const {
     control,
@@ -38,11 +42,14 @@ export default function CsInput({
         render={({ field: { onChange, onBlur, value } }) => (
           <TextInput
             mode="outlined"
-            style={{
-              width: "100%",
-            }}
+            style={[
+              {
+                width: "100%",
+              },
+              inputStyle,
+            ]}
             label={label}
-            placeholder={label}
+            placeholder={placeHolder}
             onChangeText={onChange}
             onBlur={onBlur}
             secureTextEntry={isPassword && showPassword}

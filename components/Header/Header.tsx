@@ -1,14 +1,21 @@
 import React, { ReactElement } from "react";
-import { View, Image, TouchableOpacity, BackHandler } from "react-native";
+import {
+  View,
+  Image,
+  TouchableOpacity,
+  BackHandler,
+  ViewStyle,
+} from "react-native";
 import Title from "../Typo/Title";
 import { IconButton } from "react-native-paper";
 import { useFocusEffect, useNavigation, useRouter } from "expo-router";
 type Props = {
   arrowBack?: boolean;
   title?: ReactElement;
+  style?: ViewStyle;
 };
 
-function Header({ arrowBack = false, title }: Props) {
+function Header({ arrowBack = false, title, style }: Props) {
   const navigation = useNavigation();
   const { canGoBack, goBack } = navigation;
   useFocusEffect(
@@ -30,11 +37,14 @@ function Header({ arrowBack = false, title }: Props) {
   );
   return (
     <View
-      style={{
-        width: "100%",
-        flexDirection: "row",
-        alignItems: "center",
-      }}
+      style={[
+        {
+          width: "100%",
+          flexDirection: "row",
+          alignItems: "center",
+        },
+        style,
+      ]}
     >
       {canGoBack() && arrowBack && (
         <IconButton

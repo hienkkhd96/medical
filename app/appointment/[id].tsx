@@ -1,7 +1,7 @@
 import { Ionicons } from "@expo/vector-icons";
 import { usePathname } from "expo-router";
 import { default as React } from "react";
-import { Image, ImageBackground, Platform } from "react-native";
+import { Image, ImageBackground, Platform, ScrollView } from "react-native";
 import CsButton from "../../components/Button";
 import Header from "../../components/Header/Header";
 import AppLayout from "../../components/Layout";
@@ -9,22 +9,26 @@ import { View } from "../../components/Themed";
 import Heading from "../../components/Typo/Heading";
 import Title from "../../components/Typo/Title";
 import Colors from "../../constants/Colors";
+import { Card, Divider, List } from "react-native-paper";
+import Doctor from "../../components/Card/Doctor";
 type Props = {};
 
 function AppointmentDetail({}: Props) {
   const pathname = usePathname();
-  console.log(pathname);
+  console.log(pathname.split("/")[pathname.split("/").length - 1]);
 
   return (
     <AppLayout>
-      <View
+      <ScrollView
         style={{
-          marginTop: 60,
           flex: 1,
-          paddingHorizontal: 16,
         }}
       >
         <Header
+          style={{
+            marginTop: 58,
+            paddingHorizontal: 16,
+          }}
           arrowBack
           title={
             <Heading
@@ -37,123 +41,37 @@ function AppointmentDetail({}: Props) {
             </Heading>
           }
         />
+        <Doctor />
         <View
           style={{
             marginTop: 16,
-            flexDirection: "column",
+            paddingHorizontal: 16,
           }}
         >
-          <View
-            style={{
-              padding: 16,
-              shadowColor: "#000",
-              shadowOffset: { width: 1, height: 3 },
-              shadowOpacity: 0.2,
-              shadowRadius: 11,
-              elevation: 10,
-              borderRadius: 12,
-            }}
-          >
-            <View
-              style={{
-                flexDirection: "row",
-                alignItems: "center",
-                gap: 16,
-              }}
-            >
-              <Image source={require("../../assets/images/doctor1.png")} />
-              <View>
-                <Title weight="semiBold" type="t6">
-                  Dr. Abram George
-                </Title>
-                <Title
-                  style={{
-                    marginTop: 2,
-                    color: Colors.light.gray2,
-                  }}
-                >
-                  General Physician
-                </Title>
-              </View>
-            </View>
-            <View
-              style={{
-                marginTop: 12,
-                flexDirection: "row",
-                alignItems: "center",
-                justifyContent: "space-between",
-                height: 36,
-                backgroundColor: "#DEF2FF",
-                borderRadius: 4,
-                paddingHorizontal: 8,
-              }}
-            >
-              <View
-                style={{
-                  flexDirection: "row",
-                  alignItems: "center",
-                  backgroundColor: "transparent",
-                }}
-              >
-                <Ionicons
-                  name="time-outline"
-                  size={16}
-                  color={Colors.light.background}
-                />
-                <Title
-                  weight="semiBold"
-                  type="t8"
-                  style={{
-                    marginLeft: 8,
-                  }}
-                >
-                  Monday, May 12
-                </Title>
-              </View>
-              <View
-                style={{
-                  flexDirection: "row",
-                  alignItems: "center",
-                  backgroundColor: "transparent",
-                }}
-              >
-                <Title
-                  weight="regular"
-                  type="t8"
-                  style={{
-                    marginLeft: 8,
-                  }}
-                >
-                  11:00 - 12:00 Am
-                </Title>
-              </View>
-            </View>
-          </View>
-        </View>
-        <View >
           <ImageBackground
             source={require("../../assets/images/frame_1.png")}
             resizeMode="cover"
-            resizeMethod="resize"
-            style={{
-              marginTop: 36,
-              marginHorizontal: 16,
-              borderRadius: 8,
-              width: "100%",
-              height: "auto",
-            }}
+            resizeMethod="auto"
+            style={[
+              {
+                marginTop: 16,
+                width: "auto",
+                paddingTop: "58%",
+              },
+              Platform.OS == "web" ? { height: 300 } : {},
+            ]}
           >
-            <View
-              style={{
-                paddingTop: "62%",
-              }}
-            ></View>
+            <View></View>
             <CsButton
               mode="text"
               style={{
                 position: "absolute",
-                bottom: "10%",
+                bottom: Platform.OS == "web" ? 30 : 12,
                 width: "100%",
+                paddingHorizontal: 30,
+              }}
+              onPress={() => {
+                console.log("clicked");
               }}
             >
               <Title
@@ -166,7 +84,68 @@ function AppointmentDetail({}: Props) {
             </CsButton>
           </ImageBackground>
         </View>
-      </View>
+        <View
+          style={{
+            marginTop: 24,
+            margin: 16,
+          }}
+        >
+          <Title type="t6" weight="bold">
+            Patient
+          </Title>
+
+          <Card
+            style={{
+              backgroundColor: Colors.light.white,
+              borderRadius: 12,
+              padding: 16,
+              marginTop: 16,
+            }}
+          >
+            <View>
+              <View
+                style={{
+                  flexDirection: "row",
+                  alignItems: "center",
+                  gap: 16,
+                }}
+              >
+                <Image source={require("../../assets/images/doctor1.png")} />
+                <View>
+                  <Title type="t6" weight="semiBold">
+                    Alicent Hightower
+                  </Title>
+                  <Title type="t8" weight="regular" color={Colors.light.gray1}>
+                    Migranes
+                  </Title>
+                </View>
+              </View>
+              <Divider
+                style={{
+                  marginTop: 16,
+                }}
+              />
+
+              <List.Accordion
+                title="Details"
+                description="Sent you by Dr. Emma Mia, your last check up session prescription. Please download "
+                descriptionStyle={{
+                  fontSize: 12,
+                  fontFamily: "ManropeMedium",
+                  color: Colors.light.gray3,
+                }}
+                titleStyle={{
+                  fontSize: 14,
+                  fontFamily: "ManropeSemiBold",
+                  color: Colors.light.text,
+                }}
+              >
+                <List.Item title="First item" />
+              </List.Accordion>
+            </View>
+          </Card>
+        </View>
+      </ScrollView>
     </AppLayout>
   );
 }
